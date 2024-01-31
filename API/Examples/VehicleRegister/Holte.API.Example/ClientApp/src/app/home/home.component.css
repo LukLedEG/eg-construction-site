@@ -1,0 +1,23 @@
+.buttons-container {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.input-style {
+  width: 50%;
+  padding-inline: 20px;
+}
+
+.two-columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label-style {
+  margin: 10px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+

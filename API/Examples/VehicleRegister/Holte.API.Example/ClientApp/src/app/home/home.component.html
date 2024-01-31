@@ -1,0 +1,36 @@
+<h3 class="text-center">Holte API example</h3>
+
+<p *ngIf="retrievingData"><em>Fetching data...</em></p>
+
+<div class="buttons-container mt-30">
+  <h5 class="text-center">
+    <label class="label-style">
+      The operations below require <b>X-Holte-Token</b>. The token is located in <b>appsettings.json</b> and is added to <b>Header</b> while creating <b>HttpClient</b>.
+    </label>
+  </h5>
+
+  <div class="text-center">
+    <button class="btn btn-primary" (click)="retrieveVehicleNames()">Get the names of your vehicles</button>
+  </div>
+</div>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="data.length">
+  <thead>
+      <tr>
+          <th>Display name</th>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Speed</th>
+          <th>Get points</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let item of data">
+          <td>{{ item.displayName }}</td>
+          <td>{{ item.eventDate }}</td>
+          <td><a href="http://maps.google.com/?q={{ item.longitude }},{{ item.latitude }}" target="_blank">{{ item.latitude }}, {{ item.longitude }}</a></td>
+          <td>{{ item.speed }}</td>
+          <td><button class="btn btn-secondary" (click)="getXml(item.vehicleId)">Last 7 days (XML)</button>&nbsp;<button class="btn btn-secondary" (click)="getJson(item.vehicleId)">Last 7 days (JSON)</button></td>
+      </tr>
+  </tbody>
+</table>
